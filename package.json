@@ -1,0 +1,25 @@
+{
+  "name": "bean-bowler",
+  "version": "0.0.1",
+  "description": "Scraping the Trellis menu for the only nutrition that matters",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andybeers/bean-bowler.git"
+  },
+  "author": "Andy Beers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andybeers/bean-bowler/issues"
+  },
+  "homepage": "https://github.com/andybeers/bean-bowler#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "eslint": "^5.1.0",
+    "express": "^4.16.3"
+  }
+}

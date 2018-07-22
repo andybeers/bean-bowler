@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Bean Bowler</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+  <h1>Oh shit it's the bean bowler</h1>
+  <p>Hello world! This is HTML5 Boilerplate.</p>
+  <script>
+    fetch('/api/menu')
+      .then(res => {
+        if (res.status < 400) return res.json()
+        throw new Error(res.statusText)
+      })
+      .then(stuff => document.querySelector('p').innerHTML = stuff.menu)
+      .catch(err => console.log(err))
+  </script>
+</body>
+
+</html>
