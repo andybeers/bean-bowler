@@ -17,7 +17,7 @@ app.get('/api/menu', (req, res, next) => {
         normalizeWhitespace: true,
         decodeEntities: true,
       })
-      const menu = $('#cafe-hours-2').text()
+      const menu = $('#cafe-hours-2').html()
       res.send({ menu })
     })
     .catch(err => {

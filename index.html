@@ -10,17 +10,10 @@
 </head>
 
 <body>
-  <h1>Oh shit it's the bean bowler</h1>
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <script>
-    fetch('/api/menu')
-      .then(res => {
-        if (res.status < 400) return res.json()
-        throw new Error(res.statusText)
-      })
-      .then(stuff => document.querySelector('p').innerHTML = stuff.menu)
-      .catch(err => console.log(err))
-  </script>
+  <h1>IS THERE A BEAN BOWL?</h1>
+  <button onClick="scrapeMenu()">Calculate</button>
+  <div id="results">...</div>
+  <script src="main.js"></script>
 </body>
 
 </html>
