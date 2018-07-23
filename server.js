@@ -11,7 +11,7 @@ app.use(express.static('./'))
 // Scrape dat DOM
 app.get('/api/menu', (req, res, next) => {
   axios
-    .get('https://cambia.cafebonappetit.com/')
+    .get('https://cambia.cafebonappetit.com/cafe/the-trellis/')
     .then(response => {
       const $ = cheerio.load(response.data, {
         decodeEntities: true,
