@@ -14,10 +14,10 @@ app.get('/api/menu', (req, res, next) => {
     .get('https://cambia.cafebonappetit.com/')
     .then(response => {
       const $ = cheerio.load(response.data, {
-        normalizeWhitespace: true,
+        // normalizeWhitespace: true,
         decodeEntities: true,
       })
-      const menu = $('#cafe-hours-2').html()
+      const menu = $('#daypart-2-4').text()
       res.send({ menu })
     })
     .catch(err => {
@@ -26,7 +26,7 @@ app.get('/api/menu', (req, res, next) => {
 })
 
 // Error Handling
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   const code = err.code || 500
   const error = code === 500 ? 'Internal server error' : err.error
   console.error(err.error || err.message)

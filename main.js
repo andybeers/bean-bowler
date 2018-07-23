@@ -4,6 +4,6 @@ function scrapeMenu() {
       if (res.status < 400) return res.json()
       throw new Error(res.statusText)
     })
-    .then(data => (document.querySelector('#results').innerHTML = data.menu))
+    .then(data => (document.querySelector('#results').innerText = data.menu))
     .catch(err => console.log(err))
 }
