@@ -14,7 +14,6 @@ app.get('/api/menu', (req, res, next) => {
     .get('https://cambia.cafebonappetit.com/')
     .then(response => {
       const $ = cheerio.load(response.data, {
-        // normalizeWhitespace: true,
         decodeEntities: true,
       })
       const menu = $('#daypart-2-4').text()
