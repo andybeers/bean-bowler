@@ -25,6 +25,7 @@ app.get('/api/menu', (req, res, next) => {
 })
 
 // Error Handling
+/* eslint-disable-next-line no-unused-vars */
 app.use((err, req, res, next) => {
   const code = err.code || 500
   const error = code === 500 ? 'Internal server error' : err.error
