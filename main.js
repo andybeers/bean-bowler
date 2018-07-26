@@ -1,5 +1,3 @@
-const menutext = ''
-
 function beanBowlDetector(text) {
   if (!text) return false
   return text.toLowerCase().includes('bean bowl')
