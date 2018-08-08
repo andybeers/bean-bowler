@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000
 const app = express()
 
 // Serve up our dope-ass website
-app.use(express.static('./'))
+app.use(express.static('./dist'))
 
 // Scrape dat DOM
 app.get('/api/menu', (req, res, next) => {
