@@ -1,9 +1,12 @@
 const express = require('express')
 const axios = require('axios')
 const cheerio = require('cheerio')
+const cors = require('cors')
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3000
 const app = express()
+
+app.use(cors({ origin: 'http://localhost:8080' }))
 
 // Serve up our dope-ass website
 app.use(express.static('./dist'))

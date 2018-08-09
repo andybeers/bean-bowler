@@ -33,7 +33,7 @@ export default {
       return text.toLowerCase().includes('bean bowl')
     },
     scrapeMenu: function() {
-      fetch('/api/menu')
+      fetch('http://localhost:3000/api/menu', { mode: 'cors' })
         .then(res => {
           if (res.status < 400) return res.json()
           throw new Error(res.statusText)
