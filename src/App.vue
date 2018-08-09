@@ -1,46 +1,51 @@
 <template>
   <div>
     <h1>IS THERE A BEAN BOWL ON TODAY'S MENU?</h1>
-    <h3 id="date"></h3>
-    <button onClick="scrapeMenu()">Calculate</button>
-    <div id="results">...</div>
+    <h3>{{ date }}</h3>
+    <button @click="scrapeMenu">Calculate</button>
+    <Results :scrapedText=scrapedText></Results>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Results from './components/Results.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    Results,
   },
-}
-
-function beanBowlDetector(text) {
-  if (!text) return false
-  return text.toLowerCase().includes('bean bowl')
-}
-
-function scrapeMenu() {
-  fetch('/api/menu')
-    .then(res => {
-      if (res.status < 400) return res.json()
-      throw new Error(res.statusText)
-    })
-    .then(data => {
-      const { menu } = data
-      const beanStatus = beanBowlDetector(menu)
-      document.querySelector('#results').innerText = beanStatus
-        ? 'YES'
-        : 'NOT TODAY'
-    })
-    .catch(err => console.log(err))
-}
-
-function printDate() {
-  const dateString = new Date().toISOString().slice(0, 10)
-  document.querySelector('#date').innerText = dateString
+  data: function() {
+    return {
+      date: 'asdfads',
+      scrapedText: '...',
+    }
+  },
+  created: function() {
+    this.date = this.printDate()
+  },
+  methods: {
+    printDate: function() {
+      return new Date().toISOString().slice(0, 10)
+    },
+    beanBowlDetector: function(text) {
+      if (!text) return false
+      return text.toLowerCase().includes('bean bowl')
+    },
+    scrapeMenu: function() {
+      fetch('/api/menu')
+        .then(res => {
+          if (res.status < 400) return res.json()
+          throw new Error(res.statusText)
+        })
+        .then(data => {
+          const { menu } = data
+          const beanStatus = this.beanBowlDetector(menu)
+          this.scrapedText = beanStatus ? 'YES' : 'NOT TODAY'
+        })
+        .catch(err => console.log(err))
+    },
+  },
 }
 </script>
 
