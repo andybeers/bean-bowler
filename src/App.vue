@@ -17,7 +17,7 @@ export default {
   },
   data: function() {
     return {
-      date: 'asdfads',
+      date: '--/--/----',
       scrapedText: '...',
     }
   },

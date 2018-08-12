@@ -6,7 +6,7 @@ const cors = require('cors')
 const port = process.env.PORT || 3000
 const app = express()
 
-app.use(cors({ origin: 'http://localhost:8080' }))
+app.use(cors())
 
 // Serve up our dope-ass website
 app.use(express.static('./dist'))
