@@ -1,12 +1,15 @@
 const express = require('express')
 const axios = require('axios')
 const cheerio = require('cheerio')
+const cors = require('cors')
 
 const port = process.env.PORT || 3000
 const app = express()
 
+app.use(cors())
+
 // Serve up our dope-ass website
-app.use(express.static('./'))
+app.use(express.static('./dist'))
 
 // Scrape dat DOM
 app.get('/api/menu', (req, res, next) => {
