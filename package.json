@@ -1,11 +1,11 @@
 {
   "name": "bean-bowler",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "description": "Scraping the Trellis menu for the only nutrition that matters",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
