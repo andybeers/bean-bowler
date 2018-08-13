@@ -77,7 +77,7 @@ body {
   text-align: center;
   background-color: whitesmoke;
   color: #2c3e50;
-  width: 90vw;
+  width: 80vw;
   margin: 0 auto;
   max-width: 950px;
 }
