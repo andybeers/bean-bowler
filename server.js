@@ -19,6 +19,8 @@ app.get('/api/menu', (req, res, next) => {
       const $ = cheerio.load(response.data, {
         decodeEntities: true,
       })
+      // Dust off your box of jquery methods
+      // @NOTE `contains` IS CASE SENSITIVE for awful and inexplicable reasons
       const menu = $('#daypart-2-4 button:contains("Bean Bowl")')
         .contents()
         .text()

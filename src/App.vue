@@ -12,6 +12,11 @@
     </button>
 
     <Results v-if="!loading" :scrapedText=scrapedText></Results>
+
+    <div v-if="error">
+      Ho boy you broke the crap out of this app. GO HOME.
+      {{ error }}
+    </div>
   </div>
 </template>
 
@@ -32,6 +37,7 @@ export default {
       loading: false,
       height: '1em',
       color: '#ffaf54',
+      error: null,
     }
   },
   created: function() {
@@ -41,27 +47,24 @@ export default {
     printDate: function() {
       return new Date().toISOString().slice(0, 10)
     },
-    beanBowlDetector: function(text) {
-      if (!text) return false
-      return text.toLowerCase().includes('bean bowl')
-    },
     scrapeMenu: function() {
+      this.scrapedText = ''
+      this.error = null
       this.loading = true
-      fetch('http://localhost:3000/api/menu', { mode: 'cors' })
+
+      fetch('http://localhost:3000/api/menu')
         .then(res => {
           if (res.status < 400) return res.json()
           throw new Error(res.statusText)
         })
         .then(data => {
           const { menu } = data
-          // const beanStatus = this.beanBowlDetector(menu)
-          // this.scrapedText = beanStatus ? 'YES' : 'NOT TODAY'
-          this.scrapedText = menu
+          this.scrapedText = menu || 'Not today, Sparkie'
           this.loading = false
         })
         .catch(err => {
-          console.log(err)
           this.loading = false
+          this.error = err
         })
     },
   },
