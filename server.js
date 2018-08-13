@@ -14,13 +14,16 @@ app.use(express.static('./dist'))
 // Scrape dat DOM
 app.get('/api/menu', (req, res, next) => {
   axios
-    .get('https://cambia.cafebonappetit.com/cafe/the-trellis/')
+    .get('https://cambia.cafebonappetit.com')
     .then(response => {
       const $ = cheerio.load(response.data, {
         decodeEntities: true,
       })
-      const menu = $('#cafe-hours-2 .g-col div:contains("Closed")').html()
-      console.log(menu)
+      const menu = $('#daypart-2-4 button:contains("Bean Bowl")')
+        .contents()
+        .text()
+        .trim()
+
       res.send({ menu })
     })
     .catch(err => {
