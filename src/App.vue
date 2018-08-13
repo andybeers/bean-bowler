@@ -24,7 +24,8 @@
 import Results from './components/Results.vue'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 
-const apiUrl = process.env.VUE_APP_ROOT_API || ''
+const apiUrl = process.env.VUE_APP_ROOT_API
+console.log(apiUrl)
 
 export default {
   name: 'app',
