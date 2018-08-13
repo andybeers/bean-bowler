@@ -24,6 +24,8 @@
 import Results from './components/Results.vue'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 
+const apiUrl = process.env.VUE_APP_ROOT_API || ''
+
 export default {
   name: 'app',
   components: {
@@ -52,7 +54,7 @@ export default {
       this.error = null
       this.loading = true
 
-      fetch('http://localhost:3000/api/menu')
+      fetch(`${apiUrl}/api/menu`)
         .then(res => {
           if (res.status < 400) return res.json()
           throw new Error(res.statusText)
