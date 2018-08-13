@@ -19,7 +19,8 @@ app.get('/api/menu', (req, res, next) => {
       const $ = cheerio.load(response.data, {
         decodeEntities: true,
       })
-      const menu = $('#daypart-2-4').text()
+      const menu = $('#cafe-hours-2 .g-col div:contains("Closed")').html()
+      console.log(menu)
       res.send({ menu })
     })
     .catch(err => {
