@@ -5,7 +5,7 @@
   "description": "Scraping the Trellis menu for the only nutrition that matters",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
@@ -26,7 +26,8 @@
     "cors": "^2.8.4",
     "eslint": "^5.1.0",
     "express": "^4.16.3",
-    "vue": "^2.5.16"
+    "vue": "^2.5.16",
+    "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-rc.9",
