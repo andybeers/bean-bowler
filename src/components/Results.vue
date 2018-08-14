@@ -27,6 +27,9 @@ div {
   font-size: 80px;
   margin-top: 1em;
 }
+ul {
+  list-style-type: none;
+}
 .bean-list {
   font-size: 24px;
 }

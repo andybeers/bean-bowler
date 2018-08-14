@@ -4,7 +4,7 @@
       <source src="./assets/beansoak.mp4" type="video/mp4">
     </video>
     <div class="scrim"></div>
-    <header>BEANBOWLER</header>
+    <header>BEAN 🥣 BOWLER</header>
     <div class="content">
       <h2>IS THERE A BEAN BOWL ON TODAY'S MENU?</h2>
       <h3>{{ date }}</h3>
@@ -89,17 +89,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: whitesmoke;
-  color: white;
+  color: whitesmoke;
   margin: 0;
   padding: 0;
 }
 
 header {
-  font-size: 70px;
-  margin-bottom: 0.5em;
+  font-size: 100px;
+  margin-bottom: 0.1em;
   background: rgba(0, 0, 0, 0.6);
-  padding: 0.25em;
+  padding: 0.1em;
+  font-family: 'Amatic SC', cursive;
 }
 
 button {
