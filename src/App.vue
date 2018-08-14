@@ -1,7 +1,11 @@
 <template>
   <div>
+    <video playsinline autoplay muted loop poster="./assets/beansoak.png" id="bg-video">
+      <source src="./assets/beansoak.mp4" type="video/mp4">
+    </video>
+    <div class="scrim"></div>
+    <header>BEANBOWLER</header>
     <div class="content">
-      <header>BEANBOWLER</header>
       <h2>IS THERE A BEAN BOWL ON TODAY'S MENU?</h2>
       <h3>{{ date }}</h3>
       <button @click="scrapeMenu" :disabled="loading">
@@ -14,17 +18,12 @@
       </button>
     </div>
 
-    <Results v-if="!loading" :scrapedText=scrapedText></Results>
+    <Results v-if="!loading" :scrapedText=scrapedText :beanList=beanList></Results>
 
     <div v-if="error">
       Ho boy you broke the crap out of this app. GO HOME.
-      {{ error }}
     </div>
 
-    <video playsinline autoplay muted loop poster="./assets/beansoak.png" id="bg-video">
-      <source src="./assets/beansoak.mp4" type="video/mp4">
-    </video>
-    <div class="scrim"></div>
   </div>
 </template>
 
@@ -44,6 +43,7 @@ export default {
     return {
       date: '--/--/----',
       scrapedText: '',
+      beanList: [],
       loading: false,
       height: '1em',
       color: '#ffaf54',
@@ -68,8 +68,9 @@ export default {
           throw new Error(res.statusText)
         })
         .then(data => {
-          const { menu } = data
-          this.scrapedText = menu || 'Not today, Sparkie'
+          const { beanBowls, fullMenuText } = data
+          this.beanList = fullMenuText ? fullMenuText.match(/\S+(?= bean)/gim) : []
+          this.scrapedText = beanBowls ? beanBowls.toUpperCase() : 'NO ❌ 🍽'
           this.loading = false
         })
         .catch(err => {
@@ -90,13 +91,15 @@ body {
   text-align: center;
   background-color: whitesmoke;
   color: white;
-  width: 80vw;
-  margin: 0 auto;
-  max-width: 950px;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-  font-size: 60px;
+  font-size: 70px;
+  margin-bottom: 0.5em;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.25em;
 }
 
 button {
@@ -141,6 +144,10 @@ video#bg-video {
 }
 
 .content {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.6);
+  width: 80vw;
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 2em;
 }
 </style>
