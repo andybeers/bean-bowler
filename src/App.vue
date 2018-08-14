@@ -1,15 +1,18 @@
 <template>
   <div>
-    <h1>IS THERE A BEAN BOWL ON TODAY'S MENU?</h1>
-    <h3>{{ date }}</h3>
-    <button @click="scrapeMenu" :disabled="loading">
-      <ScaleLoader
-        :loading="loading"
-        :height="height" 
-        :color="color">
-      </ScaleLoader>
-      <span v-if="!loading">Calculate</span>
-    </button>
+    <div class="content">
+      <header>BEANBOWLER</header>
+      <h2>IS THERE A BEAN BOWL ON TODAY'S MENU?</h2>
+      <h3>{{ date }}</h3>
+      <button @click="scrapeMenu" :disabled="loading">
+        <ScaleLoader
+          :loading="loading"
+          :height="height" 
+          :color="color">
+        </ScaleLoader>
+        <span v-if="!loading">Calculate</span>
+      </button>
+    </div>
 
     <Results v-if="!loading" :scrapedText=scrapedText></Results>
 
@@ -17,6 +20,11 @@
       Ho boy you broke the crap out of this app. GO HOME.
       {{ error }}
     </div>
+
+    <video playsinline autoplay muted loop poster="./assets/beansoak.png" id="bg-video">
+      <source src="./assets/beansoak.mp4" type="video/mp4">
+    </video>
+    <div class="scrim"></div>
   </div>
 </template>
 
@@ -25,7 +33,6 @@ import Results from './components/Results.vue'
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 
 const apiUrl = process.env.VUE_APP_ROOT_API
-console.log(apiUrl)
 
 export default {
   name: 'app',
@@ -82,10 +89,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: whitesmoke;
-  color: #2c3e50;
+  color: white;
   width: 80vw;
   margin: 0 auto;
   max-width: 950px;
+}
+
+header {
+  font-size: 60px;
 }
 
 button {
@@ -100,5 +111,36 @@ button {
 
 button:disabled {
   pointer-events: none;
+}
+
+video#bg-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  background: url(./assets/beansoak.png) no-repeat;
+  background-size: cover;
+}
+
+.scrim {
+  z-index: -10;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.content {
+  background: rgba(0, 0, 0, 0.7);
 }
 </style>
