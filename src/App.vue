@@ -7,7 +7,7 @@
     <header>BEAN 🥣 BOWLER</header>
     <div class="content">
       <h2>IS THERE A BEAN BOWL ON TODAY'S MENU?</h2>
-      <h3>{{ date }}</h3>
+      <p>{{ date }}</p>
       <button @click="scrapeMenu" :disabled="loading">
         <ScaleLoader
           :loading="loading"
@@ -70,7 +70,7 @@ export default {
         .then(data => {
           const { beanBowls, fullMenuText } = data
           this.beanList = fullMenuText ? fullMenuText.match(/\S+(?= bean)/gim) : []
-          this.scrapedText = beanBowls ? beanBowls.toUpperCase() : 'NO ❌ 🍽'
+          this.scrapedText = beanBowls ? beanBowls.toUpperCase() : '❌ NO ❌'
           this.loading = false
         })
         .catch(err => {
@@ -95,9 +95,8 @@ body {
 }
 
 header {
-  font-size: 100px;
-  margin-bottom: 0.1em;
-  background: rgba(0, 0, 0, 0.6);
+  font-size: 35px;
+  background: rgba(0, 0, 0, 0.8);
   padding: 0.1em;
   font-family: 'Amatic SC', cursive;
 }
@@ -132,7 +131,7 @@ video#bg-video {
 
 .scrim {
   z-index: -10;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
   position: fixed;
   top: 50%;
   left: 50%;
@@ -144,10 +143,13 @@ video#bg-video {
 }
 
 .content {
-  background: rgba(0, 0, 0, 0.6);
   width: 80vw;
   max-width: 950px;
   margin: 0 auto;
-  padding: 2em;
+  padding: 1em 0;
+}
+
+h2 {
+  margin-top: 0;
 }
 </style>
