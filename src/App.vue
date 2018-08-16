@@ -70,7 +70,7 @@ export default {
         .then(data => {
           const { beanBowls, fullMenuText } = data
           this.beanList = fullMenuText ? fullMenuText.match(/\S+(?= bean)/gim) : []
-          this.scrapedText = beanBowls ? beanBowls.toUpperCase() : '❌ NO ❌'
+          this.scrapedText = beanBowls ? beanBowls.toUpperCase() : 'NOPE'
           this.loading = false
         })
         .catch(err => {
