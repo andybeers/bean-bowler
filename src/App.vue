@@ -14,7 +14,7 @@
           :height="height" 
           :color="color">
         </ScaleLoader>
-        <span v-if="!loading">Calculate</span>
+        <b v-if="!loading">Calculate</b>
       </button>
     </div>
 
@@ -23,7 +23,6 @@
     <div v-if="error">
       Ho boy you broke the crap out of this app. GO HOME.
     </div>
-
   </div>
 </template>
 
@@ -99,10 +98,12 @@ header {
   background: rgba(0, 0, 0, 0.8);
   padding: 0.1em;
   font-family: 'Amatic SC', cursive;
+  margin-bottom: 1em;
 }
 
 button {
   padding: 0.65em 1.25em;
+  margin-top: 1em;
   border: 1px solid #2c3e50;
   border-radius: 4px;
   font-size: 16px;
