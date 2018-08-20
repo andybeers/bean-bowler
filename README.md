@@ -6,4 +6,6 @@ what types of beans are on the menu, too.
 
 Vue/Express/Cheerio
 
+![Homepage Screenshot](https://i.imgur.com/fjpassa.png)
+
 Incredible background bean-washing vid credit: https://youtu.be/WwY7bfGhXFg
