@@ -21,14 +21,22 @@ app.get('/api/menu', (req, res, next) => {
       })
       // Dust off your box of jquery methods
       // @NOTE `contains` IS CASE SENSITIVE for awful and inexplicable reasons
-      const beanBowls = $('#daypart-2-4 button:contains("bean bowl")')
+      const lowercaseBowls = $('#lunch button:contains("bean bowl")')
         .contents()
         .text()
         .trim()
 
-      const fullMenuText = $('#daypart-2-4').text()
+      const uppercaseBowls = $('#lunch button:contains("Bean Bowl")')
+        .contents()
+        .text()
+        .trim()
 
-      res.send({ beanBowls, fullMenuText })
+      const fullMenuText = $('#lunch').text()
+
+      res.send({
+        beanBowls: lowercaseBowls || uppercaseBowls,
+        fullMenuText: fullMenuText ? fullMenuText.toLowerCase() : fullMenuText,
+      })
     })
     .catch(err => {
       next(err)
